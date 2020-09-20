@@ -1,0 +1,26 @@
+const isPrime = num => {
+	if (!Number.isSafeInteger(num)) {
+		console.log('переданное значение не является безопасным целым числом');
+		return false;
+	} else if (num < 2) {
+		console.log('переданное значение должно быть > 1');
+		return false;
+	} else {
+		let i = 2;
+		const limit = Math.sqrt(num);
+		while (i <= limit) {
+			if (num % i === 0) {
+				console.log(num, '- не является простым числом');
+				return false;
+			}
+			i += 1;
+		}
+		console.log(num, '- является простым числом');
+		return true;
+	}
+};
+
+isPrime(45); // 45 - не является простым числом
+isPrime(5); // 5 - является простым числом
+isPrime('5'); // переданное значение не является безопасным целым числом
+isPrime(-5); // переданное значение должно быть > 1
